@@ -1,6 +1,10 @@
 
 import openal.AL;
 
+    #if (!mac && !android && !ios && !linux && !windows)
+        #error "You should define a target, please read build.hxml"
+    #end
+
 class Test {
 
     static var device : Device;
@@ -51,7 +55,7 @@ class Test {
 
     static function destroy() {
 
-        ALC.makeContextCurrent( untyped __cpp__('NULL') );
+        ALC.makeContextCurrent( cast null );
 
         trace('cleared current context / ${ ALCError.desc(ALC.getError(device)) }');
 
