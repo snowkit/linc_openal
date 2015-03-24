@@ -9,9 +9,9 @@ Mac, Linux, Windows, Android, iOS
 
 In order to use this library the following must be understood about each platform:
 
-`iOS`, `Mac` - The OS includes OpenAL and this library uses that version
-`Android` - The code is linked into your dynamic library that haxe/hxcpp generates
-`Linux`, `Windows` - prebuilt library included, see below for notes
+`iOS`, `Mac` - The OS includes OpenAL and this library uses that version   
+`Android` - The code is linked into your dynamic library that haxe/hxcpp generates   
+`Linux`, `Windows` - prebuilt library included, see below for notes   
 
 #### Using the prebuilt libraries
 
@@ -20,7 +20,8 @@ There is a case where you can statically link, but this is only if your source i
 
 ## Build requirements
 
-Make sure you `git clone --recursive` or run `git submodule update --init` once you have cloned it. You must have the `lib/openal` and `lib/openal-android` folders in the tree locally to build using it.
+Make sure you `git clone --recursive` or run `git submodule update --init` once you have cloned it.    
+You must have the `lib/openal` and `lib/openal-android` folders in the tree locally to build using it.
 
 #### When doing plain haxe:   
 
