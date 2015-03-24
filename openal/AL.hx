@@ -4,26 +4,39 @@ package openal;
     #error "OpenAL is only available with haxe + hxcpp ( cpp target ) right now."
 #end
 
-@:include('./snowkit_openal.h')
-@:native("ALCdevice")
-extern class ALCdevice {}
+@:native("ALCdevice") @:include('./snowkit_openal.h') extern class ALCdevice {}
+@:native("ALCcontext") @:include('./snowkit_openal.h') extern class ALCcontext {}
 
-@:include('./snowkit_openal.h')
-@:native("ALCcontext")
-extern class ALCcontext {}
+typedef Device = cpp.Pointer<ALCdevice>;
+typedef Context = cpp.Pointer<ALCcontext>;
 
-typedef Device = cpp.RawPointer<ALCdevice>;
-typedef Context = cpp.RawPointer<ALCcontext>;
-
-@:include('./snowkit_openal.cpp')
-@:buildXml("
-    <files id='haxe'>
-        <compilerflag value='-DSNOWKIT_OPENAL' />
-    </files>
+#if (mac || ios) @:buildXml("
     <target id='haxe'>
-        <lib name='../../deps/lib/Mac64/libopenal.dylib' />
-    </target>
-")
+        <vflag name='-framework' value='OpenAL' />
+    </target>")
+#end
+#if windows @:buildXml("
+    <target id='haxe'>
+        <lib name='${SNOWKIT_OPENAL_LIB_PATH}/lib/windows/openal64.lib' if='HXCPP_M64' />
+        <lib name='${SNOWKIT_OPENAL_LIB_PATH}/lib/windows/openal32.lib' if='HXCPP_M32' />
+    </target>")
+#end
+#if linux @:buildXml("
+    <target id='haxe'>
+        <lib name='${SNOWKIT_OPENAL_LIB_PATH}/lib/linux/openal64.so' if='HXCPP_M64' />
+        <lib name='${SNOWKIT_OPENAL_LIB_PATH}/lib/linux/openal32.so' if='HXCPP_M32' />
+    </target>")
+#end
+#if android @:buildXml("
+    <set name='NATIVE_TOOLKIT_PATH' value='${SNOWKIT_OPENAL_LIB_PATH}'/>
+    <include name='${SNOWKIT_OPENAL_LIB_PATH}/openal-android/files.xml'/>
+    <include name='${SNOWKIT_OPENAL_LIB_PATH}/openal-android/defines.xml'/>
+    <target id='haxe'>
+        <files id='native-toolkit-openal-android' />
+        <lib name='-lOpenSLES'/>
+    </target>")
+#end
+@:include('./snowkit_openal.cpp')
 extern class AL {
 
     // scene configs
