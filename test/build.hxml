@@ -1,0 +1,5 @@
+-main Test.hx
+-cpp cpp/
+-cp ../
+-resource sound.pcm@sound.pcm
+-cmd cpp/Test
