@@ -6,7 +6,8 @@
 
     #include <hxcpp.h>
 
-    namespace snowkit_openal {
+    namespace snowkit {
+        namespace openal {
 
         //AL helpers
 
@@ -40,6 +41,7 @@
                 return alcCreateContext(device, (attr_list != null()) ? &attr_list[0] : 0 );
             }
 
-    } //snowkit_openal namespace
+        } //openal namespace
+    } //snowkit namespace
 
 #endif
