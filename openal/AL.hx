@@ -19,8 +19,8 @@ typedef Context = cpp.Pointer<ALCcontext>;
     #end
     #if windows @:buildXml("
         <target id='haxe'>
-            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/windows/openal64.lib' if='HXCPP_M64' />
-            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/windows/openal32.lib' if='HXCPP_M32' />
+            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
+            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
         </target>")
     #end
     #if linux @:buildXml("

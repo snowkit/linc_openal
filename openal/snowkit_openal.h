@@ -8,8 +8,8 @@
         #include "../lib/openal-android/include/AL/al.h"
         #include "../lib/openal-android/include/AL/alc.h"
     #else
-        #include "../lib/openal/include/AL/al.h"
-        #include "../lib/openal/include/AL/alc.h"
+        #include "../lib/openal-soft/include/AL/al.h"
+        #include "../lib/openal-soft/include/AL/alc.h"
     #endif
 
 #endif
