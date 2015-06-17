@@ -32,12 +32,10 @@ Also note, on windows the 64 bit library is still called OpenAL32.dll - this is 
 
 #### Linux dynamic library notes
 
-**By default the system OpenAL is used**
-
+**By default the system OpenAL is used**   
 This means that the developer building their game needs `libopenal-dev` (build time) installed, and `openal-soft` (runtime).
 
-**What about a binary-relative library?**
-
+**What about a binary-relative library?**   
 On linux, in order for a dynamic library like OpenAL to be found alongside the binary file,   
 Which is sometimes preferable, the following options must be considered.
 
@@ -49,7 +47,7 @@ If your folder looked like this,
 Without one of the below options, it will fail to find the library.   
 _(That is unless the system has the library installed somewhere already)_.
 
-**LD_LIBRARY_PATH option**
+**LD_LIBRARY_PATH option**   
 An environment variable has to be set called `LD_LIBRARY_PATH` when running,   
 would usually be set to the folder containing the library.
 
@@ -60,7 +58,7 @@ All it would need to do is run `export LD_LIBRARY_PATH=./ && ./game`
 - `game`
 - `libopenal.so`
 
-**rpath**
+**rpath**   
 The alternative option is a compiler flag which embeds a path inside the binary.
 This option also has a special value called `$ORIGIN` which would be where the binary is located,
 and there would be no special script to run the binary needed.
@@ -75,6 +73,7 @@ defining `SNOWKIT_OPENAL_LINUX_NO_RPATH_ORIGIN`.
 - `Mac`,`iOS` No runtime requirements
 - `Windows` Copy the correct `OpenAL32.dll` alongside your binary from the lib/openal-soft folder
 - `Linux` Make sure `openal-soft` is installed (sudo apt-get install openal-soft or similar)
+    - unless using the relative options, in which case make sure the correct .so is alongside the binary
 - `Android` If using this library manually, the lib/openal-android libary is compiled into your haxe app step (commonly an .so)
 
 ---
@@ -85,6 +84,8 @@ defining `SNOWKIT_OPENAL_LINUX_NO_RPATH_ORIGIN`.
     - This populates `lib/openal-android` which you need
 - `Linux` Make sure `libopenal-dev` and `openal-soft` are installed
     - using `apt-get libopenal-dev openal-soft` or equivalent
+- `Windows` none - Prebuilt openal-soft is used, so none
+- `Mac/iOS` none - OS OpenAL.framework is used
 
 #### Important notes:   
 
