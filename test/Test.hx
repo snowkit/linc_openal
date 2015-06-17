@@ -60,10 +60,12 @@ class Test {
         trace('cleared current context / ${ ALCError.desc(ALC.getError(device)) }');
 
         ALC.destroyContext( context );
+        context = null;
 
         trace('destroyed context / ${ ALCError.desc(ALC.getError(device)) }');
 
         ALC.closeDevice( device );
+        device = null;
 
         trace('closed device / ${ ALCError.desc(ALC.getError(device)) }');
 
