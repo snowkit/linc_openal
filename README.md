@@ -26,8 +26,8 @@ It's important to take note that the **OpenAL libraries are generally required t
 There is a case where you can statically link, but this is only if your source is made public at the time of users obtaining the code.
 In any case, on Windows and Linux OpenAL-soft latest release is used as a binary build for simplicity.
 
+For more information, see the readme in lib/openal-soft for details.
 Also note, on windows the 64 bit library is still called OpenAL32.dll - this is not a typo.
-See the readme
 
 ## Runtime requirements
 
