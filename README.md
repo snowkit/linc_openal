@@ -1,8 +1,9 @@
-# openal
+# snowkit::openal
+“snõwkit native openal”
 
-Haxe @:native bindings for OpenAL
+Complete Haxe @:native bindings for OpenAL for the hxcpp target.
 
-### Supported platforms 
+### Supported platforms
 
 - Mac
 - Linux
