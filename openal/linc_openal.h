@@ -1,5 +1,5 @@
-#ifndef SNOWKIT_OPENAL_H
-#define SNOWKIT_OPENAL_H
+#ifndef _LINC_OPENAL_H_
+#define _LINC_OPENAL_H_
 
     #if defined(HX_MACOS) || defined(IPHONE)
         #include <OpenAL/al.h>
@@ -12,4 +12,4 @@
         #include "../lib/openal-soft/include/AL/alc.h"
     #endif
 
-#endif
+#endif //_LINC_OPENAL_H_

@@ -19,33 +19,33 @@ typedef Context = cpp.Pointer<ALCcontext>;
     #end
     #if windows @:buildXml("
         <target id='haxe'>
-            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
-            <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
+            <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
+            <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
         </target>")
     #end
     #if linux @:buildXml("
         <target id='haxe'>
-            <section if='SNOWKIT_OPENAL_RELATIVE_DYNAMIC_LIB'>
-                <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Linux64/libopenal.so' if='HXCPP_M64' />
-                <lib name='${SNOWKIT_OPENAL_LIB_PATH}/openal-soft/lib/Linux/libopenal.so' if='HXCPP_M32' />
-                <vflag name='-Wl,-rpath=$ORIGIN' value='' unless='SNOWKIT_OPENAL_LINUX_NO_RPATH_ORIGIN' />
+            <section if='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
+                <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Linux64/libopenal.so' if='HXCPP_M64' />
+                <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Linux/libopenal.so' if='HXCPP_M32' />
+                <vflag name='-Wl,-rpath=$ORIGIN' value='' unless='LINC_OPENAL_LINUX_NO_RPATH_ORIGIN' />
             </section>
-            <section unless='SNOWKIT_OPENAL_RELATIVE_DYNAMIC_LIB'>
+            <section unless='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
                 <lib name='-lopenal' />
             </section>
         </target>")
     #end
     #if android @:buildXml("
-        <set name='NATIVE_TOOLKIT_PATH' value='${SNOWKIT_OPENAL_LIB_PATH}'/>
-        <include name='${SNOWKIT_OPENAL_LIB_PATH}/openal-android/files.xml'/>
-        <include name='${SNOWKIT_OPENAL_LIB_PATH}/openal-android/defines.xml'/>
+        <set name='NATIVE_TOOLKIT_PATH' value='${LINC_OPENAL_LIB_PATH}'/>
+        <include name='${LINC_OPENAL_LIB_PATH}/openal-android/files.xml'/>
+        <include name='${LINC_OPENAL_LIB_PATH}/openal-android/defines.xml'/>
         <target id='haxe'>
             <files id='native-toolkit-openal-android' />
             <lib name='-lOpenSLES'/>
         </target>")
     #end
 
-    @:include('./snowkit_openal.cpp')
+    @:include('./linc_openal.cpp')
 
         /** The main OpenAL API */
     extern class AL {
@@ -200,7 +200,7 @@ typedef Context = cpp.Pointer<ALCcontext>;
 
         //buffer data and state
 
-                @:native('snowkit::openal::bufferData')
+                @:native('linc::openal::bufferData')
             public static function bufferData(buffer:Int, format:Int, frequency:Int, bytes:haxe.io.BytesData, byteOffset:Int, byteLength:Int) : Void;
                 @:native('alBufferf')
             public static function bufferf(buffer:Int, param:Int, value:Float) : Void;
@@ -229,18 +229,18 @@ typedef Context = cpp.Pointer<ALCcontext>;
 
         //unofficial API helpers
 
-                @:native('snowkit::openal::genSource')
+                @:native('linc::openal::genSource')
             public static function genSource() : Int;
-                @:native('snowkit::openal::deleteSource')
+                @:native('linc::openal::deleteSource')
             public static function deleteSource(source:Int) : Void;
-                @:native('snowkit::openal::genBuffer')
+                @:native('linc::openal::genBuffer')
             public static function genBuffer() : Int;
-                @:native('snowkit::openal::deleteBuffer')
+                @:native('linc::openal::deleteBuffer')
             public static function deleteBuffer(buffer:Int) : Void;
 
-                @:native('snowkit::openal::sourceQueueBuffer')
+                @:native('linc::openal::sourceQueueBuffer')
             public static function sourceQueueBuffer(source:Int, buffer:Int) : Void;
-                @:native('snowkit::openal::sourceUnqueueBuffer')
+                @:native('linc::openal::sourceUnqueueBuffer')
             public static function sourceUnqueueBuffer(source:Int) : Int;
 
 
@@ -316,12 +316,12 @@ typedef Context = cpp.Pointer<ALCcontext>;
     } //AL
 
 
-    @:include('./snowkit_openal.cpp')
+    @:include('./linc_openal.cpp')
     extern class ALC {
 
     // contexts
 
-            @:native('snowkit::openal::createContext')
+            @:native('linc::openal::createContext')
         public static function createContext(device:Device, ?attrlist:Array<Int>) : Context;
             @:native('alcMakeContextCurrent')
         public static function makeContextCurrent(context:Context) : Bool;
@@ -436,10 +436,10 @@ typedef Context = cpp.Pointer<ALCcontext>;
 //Internal
 
     @:native("ALCdevice")
-    @:include('./snowkit_openal.h')
+    @:include('./linc_openal.h')
     private extern class ALCdevice { }
 
     @:native("ALCcontext")
-    @:include('./snowkit_openal.h')
+    @:include('./linc_openal.h')
     private extern class ALCcontext {}
 

@@ -6,11 +6,11 @@
 # currently, you must set this to the lib/ folder,
 # relative to your cpp build output folder or absolute path
 
--D SNOWKIT_OPENAL_LIB_PATH=../../lib/
+-D LINC_OPENAL_LIB_PATH=../../lib/
 
 # pick a target
 
-#-D mac
+-D mac
 #-D windows
 #-D linux
 

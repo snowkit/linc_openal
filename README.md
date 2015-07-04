@@ -1,7 +1,6 @@
-# snowkit::openal
-“snõwkit native openal”
-
-Complete Haxe @:native bindings for OpenAL for the hxcpp target.
+# linc/OpenAL
+Haxe/hxcpp @:native bindings for OpenAL.
+This is a [linc](#) library.
 
 ### Supported platforms
 
@@ -64,9 +63,9 @@ The alternative option is a compiler flag which embeds a path inside the binary.
 This option also has a special value called `$ORIGIN` which would be where the binary is located,
 and there would be no special script to run the binary needed.
 
-To use this option with this library, you can define `SNOWKIT_OPENAL_RELATIVE_DYNAMIC_LIB`,
+To use this option with this library, you can define `LINC_OPENAL_RELATIVE_DYNAMIC_LIB`,
 it will use the rpath option by default, but that can be toggled by   
-defining `SNOWKIT_OPENAL_LINUX_NO_RPATH_ORIGIN`.
+defining `LINC_OPENAL_LINUX_NO_RPATH_ORIGIN`.
 
 
 ## Runtime/build preparation requirements

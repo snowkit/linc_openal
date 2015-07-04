@@ -1,12 +1,13 @@
+//This file is included, so this is required!
+#ifndef _LINC_OPENAL_CPP_
+#define _LINC_OPENAL_CPP_
 
-#include "./snowkit_openal.h"
-
-#ifndef SNOWKIT_OPENAL_CPP
-#define SNOWKIT_OPENAL_CPP
+#include "./linc_openal.h"
 
     #include <hxcpp.h>
 
-    namespace snowkit {
+    namespace linc {
+
         namespace openal {
 
         //AL helpers
@@ -42,6 +43,7 @@
             }
 
         } //openal namespace
-    } //snowkit namespace
 
-#endif
+    } //linc namespace
+
+#endif //_LINC_OPENAL_CPP_
