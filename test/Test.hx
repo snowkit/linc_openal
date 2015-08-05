@@ -5,7 +5,10 @@ import openal.AL;
         #error "You should define a target, please read build.hxml"
     #end
 
+
 class Test {
+
+    static inline var forcer:String = Forcer.get();
 
     static var device : Device;
     static var context : Context;
