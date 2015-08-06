@@ -8,8 +8,6 @@ import openal.AL;
 
 class Test {
 
-    static inline var forcer:String = Forcer.get();
-
     static var device : Device;
     static var context : Context;
 

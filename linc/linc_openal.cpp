@@ -3,8 +3,7 @@
 #define _LINC_OPENAL_CPP_
 
 #include "./linc_openal.h"
-
-    #include <hxcpp.h>
+#include <hxcpp.h>
 
     namespace linc {
 

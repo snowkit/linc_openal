@@ -11,42 +11,8 @@ typedef Context = cpp.Pointer<ALCcontext>;
 
 //AL main class
 
-
-    #if (mac || ios) @:buildXml("
-        <target id='haxe'>
-            <vflag name='-framework' value='OpenAL' />
-        </target>")
-    #end
-    #if windows @:buildXml("
-        <target id='haxe'>
-            <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
-            <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
-        </target>")
-    #end
-    #if linux @:buildXml("
-        <target id='haxe'>
-            <section if='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
-                <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Linux64/libopenal.so' if='HXCPP_M64' />
-                <lib name='${LINC_OPENAL_LIB_PATH}/openal-soft/lib/Linux/libopenal.so' if='HXCPP_M32' />
-                <vflag name='-Wl,-rpath=$ORIGIN' value='' unless='LINC_OPENAL_LINUX_NO_RPATH_ORIGIN' />
-            </section>
-            <section unless='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
-                <lib name='-lopenal' />
-            </section>
-        </target>")
-    #end
-    #if android @:buildXml("
-        <set name='NATIVE_TOOLKIT_PATH' value='${LINC_OPENAL_LIB_PATH}'/>
-        <include name='${LINC_OPENAL_LIB_PATH}/openal-android/files.xml'/>
-        <include name='${LINC_OPENAL_LIB_PATH}/openal-android/defines.xml'/>
-        <target id='haxe'>
-            <files id='native-toolkit-openal-android' />
-            <lib name='-lOpenSLES'/>
-        </target>")
-    #end
-
-    @:include('./linc_openal.cpp')
-
+    @:include('linc_openal.h')
+    @:build(linc.Touch.apply())
         /** The main OpenAL API */
     extern class AL {
 
@@ -316,7 +282,8 @@ typedef Context = cpp.Pointer<ALCcontext>;
     } //AL
 
 
-    @:include('./linc_openal.cpp')
+    @:include('linc_openal.h')
+    @:build(linc.Touch.apply())
     extern class ALC {
 
     // contexts
@@ -436,10 +403,14 @@ typedef Context = cpp.Pointer<ALCcontext>;
 //Internal
 
     @:native("ALCdevice")
-    @:include('./linc_openal.h')
+    @:include('linc_openal.h')
     private extern class ALCdevice { }
 
     @:native("ALCcontext")
-    @:include('./linc_openal.h')
+    @:include('linc_openal.h')
     private extern class ALCcontext {}
 
+
+
+@:buildXml("<include name='${haxelib:linc_openal}/linc/linc_openal.xml'/>")
+@:keep private class OpenALLinc {}
