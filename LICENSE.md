@@ -1,6 +1,13 @@
+The lib/ folder libraries have their own licenses.
+Be sure to consult those accordingly.
+
+- lib/openal-android/LICENSE.md
+- lib/openal-soft/COPYING
+
 The MIT License (MIT)
 
-Copyright (c) 2015 snõwkit
+Copyright (c) 2015 Sven Bergström
+Copyright (c) 2015 snõwkit contributors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
