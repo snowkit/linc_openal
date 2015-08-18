@@ -10,9 +10,11 @@ typedef Device = cpp.Pointer<ALCdevice>;
 typedef Context = cpp.Pointer<ALCcontext>;
 
 //AL main class
-
+    
+    @:keep
     @:include('linc_openal.h')
     @:build(linc.Touch.apply())
+    @:buildXml("<include name='${haxelib:linc_openal}/linc/linc_openal.xml'/>")
         /** The main OpenAL API */
     extern class AL {
 
@@ -409,8 +411,3 @@ typedef Context = cpp.Pointer<ALCcontext>;
     @:native("ALCcontext")
     @:include('linc_openal.h')
     private extern class ALCcontext {}
-
-
-
-@:buildXml("<include name='${haxelib:linc_openal}/linc/linc_openal.xml'/>")
-@:keep private class OpenALLinc {}
