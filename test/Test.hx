@@ -16,7 +16,6 @@ class Test {
 
     static function main() {
 
-        var s = '1';
         if(init()) {
             create_sound();
             play_sound();

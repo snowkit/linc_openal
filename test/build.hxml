@@ -2,6 +2,8 @@
 -resource sound.pcm@sound.pcm
 -cpp cpp/
 -cp ../
+-debug
+-cmd cpp/Test-debug
 
 # pick a target
 
