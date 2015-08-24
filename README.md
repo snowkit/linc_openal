@@ -1,6 +1,13 @@
-# linc/OpenAL
-Haxe/hxcpp @:native bindings for OpenAL.
-This is a [linc](#) library.
+# linc/openal
+Haxe/hxcpp @:native bindings for OpenAL audio playback.
+
+This is a [linc](http://snowkit.github.io/linc/) library.
+
+---
+
+This library works with the Haxe cpp target only.
+
+---
 
 ### Supported platforms
 
@@ -10,7 +17,14 @@ This is a [linc](#) library.
 - Android
 - iOS
 
-This is a hxcpp (cpp target) specific library and will ONLY work with the cpp target.
+
+### Example usage
+
+See test/Test.hx
+
+Be sure to read the OpenAL documentation:
+http://www.openal.org/documentation/openal-1.1-specification.pdf
+
 
 ### Platform notes
 
@@ -37,7 +51,7 @@ This means that the developer building their game needs `libopenal-dev` (build t
 
 **What about a binary-relative library?**   
 On linux, in order for a dynamic library like OpenAL to be found alongside the binary file,   
-Which is sometimes preferable, the following options must be considered.
+which is sometimes preferable, the following options must be considered.
 
 If your folder looked like this,   
 
@@ -70,7 +84,8 @@ defining `LINC_OPENAL_LINUX_NO_RPATH_ORIGIN`.
 
 ## Runtime/build preparation requirements
 
-- `Mac`,`iOS` No runtime requirements
+- `Mac` No runtime requirements
+- `iOS` No runtime requirements
 - `Windows` Copy the correct `OpenAL32.dll` alongside your binary from the lib/openal-soft folder
 - `Linux` Make sure `openal-soft` is installed (sudo apt-get install openal-soft or similar)
     - unless using the relative options, in which case make sure the correct .so is alongside the binary
@@ -84,8 +99,9 @@ defining `LINC_OPENAL_LINUX_NO_RPATH_ORIGIN`.
     - This populates `lib/openal-android` which you need
 - `Linux` Make sure `libopenal-dev` and `openal-soft` are installed
     - using `apt-get libopenal-dev openal-soft` or equivalent
-- `Windows` none - Prebuilt openal-soft is used, so none
-- `Mac/iOS` none - OS OpenAL.framework is used
+- `Windows` none - Prebuilt openal-soft is used
+- `Mac` none - OS OpenAL is used
+- `iOS` none - OS OpenAL is used
 
 #### Important notes:   
 
@@ -106,8 +122,7 @@ On Windows/Mac/Linux the output of the test is an executable, which you can run.
 	- android - uses openal-android from native-toolkit/openal-android as a submodule
     - mac/ios - uses OS OpenAL framework
 
-## Todo
+## :todo:
 
-- Use relative paths when possible can in hxcpp buildxml, for the libs/deps
-- Implement wrappers for types like Array<Int> and Array<Bool>, I'm not sure they apply magically?
+- Test/fix functions with the array types like Array<Int> and Array<Bool> 
 - Test all end points
