@@ -9,6 +9,10 @@ This library works with the Haxe cpp target only.
 
 ---
 
+### Install
+
+`haxelib git linc_openal https://github.com/snowkit/linc_openal.git`
+
 ### Supported platforms
 
 - Mac
