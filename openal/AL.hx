@@ -117,19 +117,19 @@ extern class AL {
         public static function sourcei(source:Int, param:Int, value:Int) : Void;
             @:native('alSource3i')
         public static function source3i(source:Int, param:Int, value1:Int, value2:Int, value3:Int) : Void;
-            @:native('alSourceiv')
+            @:native('alSourceiv') //:todo:
         public static function sourceiv(source:Int, param:Int, values:Array<Int> ) : Void;
-            @:native('alGetSourcef')
+            @:native('linc::openal::getSourcef')
         public static function getSourcef(source:Int, param:Int) : Float;
-            @:native('alGetSource3f')
-        public static function getSource3f(source:Int, param:Int) : Array<Float>;
-            @:native('alGetSourcefv')
+            @:native('linc::openal::getSource3f')
+        public static function getSource3f(source:Int, param:Int, into:Array<Float>) : Array<Float>;
+            @:native('alGetSourcefv') //:todo:
         public static function getSourcefv(source:Int, param:Int) : Array<Float>;
-            @:native('alGetSourcei')
+            @:native('linc::openal::getSourcei')
         public static function getSourcei(source:Int,  param:Int) : Int;
-            @:native('alGetSource3i')
-        public static function getSource3i(source:Int, param:Int) : Array<Int>;
-            @:native('alGetSourceiv')
+            @:native('linc::openal::getSource3i')
+        public static function getSource3i(source:Int, param:Int, into:Array<Int>) : Array<Int>;
+            @:native('alGetSourceiv') //:todo:
         public static function getSourceiv(source:Int,  param:Int, ?count:Int = 1) : Array<Int>;
 
     //source states
