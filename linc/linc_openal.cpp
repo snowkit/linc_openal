@@ -145,7 +145,7 @@
                 alSourceQueueBuffers(source, 1, &buffer);
             }
 
-            static ALuint unq_buffers[1];
+            static ALuint unq_buffers[1] = {0};
             int sourceUnqueueBuffer(ALuint source) {
                 alSourceUnqueueBuffers(source, 1, unq_buffers);
                 return unq_buffers[0];
