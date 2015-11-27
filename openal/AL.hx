@@ -157,9 +157,9 @@ extern class AL {
 
     //buffer management
 
-            @:native('alGenBuffers')
-        public static function genBuffers(n:Int) : Array<Int> ;
-            @:native('alDeleteBuffers')
+            @:native('linc::openal::genBuffers')
+        public static function genBuffers(n:Int, into:Array<Int>) : Array<Int> ;
+            @:native('linc::openal::deleteBuffers')
         public static function deleteBuffers(buffers:Array<Int>) : Void;
             @:native('alIsBuffer')
         public static function isBuffer(buffer:Int) : Bool;
