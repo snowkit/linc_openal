@@ -151,7 +151,7 @@ extern class AL {
             @:native('alSourcePause')
         public static function sourcePause(source:Int) : Void;
             @:native('alSourceQueueBuffers')
-        public static function sourceQueueBuffers(source:Int, nb:Int, buffers:Array<Int> ) : Void;
+        public static function sourceQueueBuffers(source:Int, nb:Int, buffers:Array<Int>) : Void;
             @:native('alSourceUnqueueBuffers')
         public static function sourceUnqueueBuffers(source:Int, nb:Int ) : Array<Int>;
 
@@ -170,27 +170,27 @@ extern class AL {
         public static function bufferData(buffer:Int, format:Int, frequency:Int, bytes:haxe.io.BytesData, byteOffset:Int, byteLength:Int) : Void;
             @:native('alBufferf')
         public static function bufferf(buffer:Int, param:Int, value:Float) : Void;
-            @:native('alBuffer3f')
+            @:native('alBuffer3f')//:todo:
         public static function buffer3f(buffer:Int, param:Int, value1:Float, value2:Float, value3:Float) : Void;
-            @:native('alBufferfv')
+            @:native('alBufferfv')//:todo:
         public static function bufferfv(buffer:Int, param:Int, values:Array<Float> ) : Void;
             @:native('alBufferi')
         public static function bufferi(buffer:Int, param:Int, value:Int) : Void;
             @:native('alBuffer3i')
         public static function buffer3i(buffer:Int, param:Int, value1:Int, value2:Int, value3:Int) : Void;
-            @:native('alBufferiv')
+            @:native('alBufferiv')//:todo:
         public static function bufferiv(buffer:Int, param:Int, values:Array<Int> ) : Void;
-            @:native('alGetBufferf')
+            @:native('linc::openal::getBufferf')
         public static function getBufferf(buffer:Int, param:Int) : Float;
-            @:native('alGetBuffer3f')
+            @:native('alGetBuffer3f')//:todo:
         public static function getBuffer3f(buffer:Int, param:Int) : Array<Float>;
-            @:native('alGetBufferfv')
+            @:native('alGetBufferfv')//:todo:
         public static function getBufferfv(buffer:Int, param:Int, ?count:Int = 1) : Array<Float>;
-            @:native('alGetBufferi')
+            @:native('linc::openal::getBufferi')
         public static function getBufferi(buffer:Int, param:Int) : Int;
-            @:native('alGetBuffer3i')
+            @:native('alGetBuffer3i')//:todo:
         public static function getBuffer3i(buffer:Int, param:Int) : Array<Int>;
-            @:native('alGetBufferiv')
+            @:native('alGetBufferiv')//:todo:
         public static function getBufferiv(buffer:Int, param:Int, ?count:Int = 1) : Array<Int>;
 
     //unofficial API helpers

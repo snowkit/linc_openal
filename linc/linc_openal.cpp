@@ -40,7 +40,7 @@
                 }
                 #endif
 
-                alGenBuffers( (ALuint)1, reinterpret_cast<ALuint*>(&into[0]) );
+                alGenBuffers( (ALuint)count, reinterpret_cast<ALuint*>(&into[0]) );
 
                 return into;
 
@@ -54,8 +54,30 @@
 
 
             void bufferData( ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength) {
+            
                 alBufferData( buffer, format, &bytes[0] + byteOffset, byteLength, frequency );
+            
             }
+
+            int getBufferi(ALuint buffer, int param) {
+                
+                int res;
+
+                    alGetBufferi(buffer, param, &res);
+
+                return res;
+
+            } //getBufferi
+
+            float getBufferf(ALuint buffer, int param) {
+                
+                float res;
+
+                    alGetBufferf(buffer, param, &res);
+
+                return res;
+            
+            } //getSourcef
 
             int getSourcei(ALuint source, int param) {
                 
@@ -98,7 +120,7 @@
 
             }
 
-            Array<Float> getSource3f(ALuint source, int param, Array<float> into) {
+            Array<float> getSource3f(ALuint source, int param, Array<float> into) {
 
                 #if HX_DEBUG
                 if(into == null() || into->length < 3) {
@@ -117,6 +139,16 @@
 
                 return into;
 
+            }
+
+            void sourceQueueBuffer(ALuint source, ALuint buffer) {
+                alSourceQueueBuffers(source, 1, &buffer);
+            }
+
+            static ALuint unq_buffers[1];
+            int sourceUnqueueBuffer(ALuint source) {
+                alSourceUnqueueBuffers(source, 1, unq_buffers);
+                return unq_buffers[0];
             }
 
         //ALC helpers

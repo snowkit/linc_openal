@@ -26,10 +26,14 @@ namespace linc {
         extern void deleteBuffer(ALuint buffer);
         extern void bufferData(ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength);
         extern ALCcontext* createContext(ALCdevice* device, Array<ALCint> attr_list );
+        extern int getBufferi(ALuint buffer, int param);
+        extern float getBufferf(ALuint buffer, int param);
         extern int getSourcei(ALuint source, int param);
         extern float getSourcef(ALuint source, int param);
         extern Array<int> getSource3i(ALuint source, int param, Array<int> into);
-        extern Array<Float> getSource3f(ALuint source, int param, Array<float> into);
+        extern Array<float> getSource3f(ALuint source, int param, Array<float> into);
+        extern void sourceQueueBuffer(ALuint source, ALuint buffer);
+        extern int sourceUnqueueBuffer(ALuint source);
 
     } //openal namespace
 
