@@ -5,9 +5,31 @@
 #include "./linc_openal.h"
 #include <hxcpp.h>
 
+#if defined(ANDROID) || defined(__ANDROID__)
+    extern "C" {
+        // void alcandroid_OnLoad( JavaVM *vm );
+        // void alcandroid_OnUnload( JavaVM *vm );
+        void alcandroid_Resume();
+        void alcandroid_Suspend();
+    }
+#endif
+
     namespace linc {
 
         namespace openal {
+
+            #if defined(ANDROID) || defined(__ANDROID__)
+                
+                void androidResume() {
+                    alcandroid_Resume();
+                }
+
+                
+                void androidSuspend() {
+                    alcandroid_Suspend();
+                }
+
+            #endif
 
         //AL helpers
 

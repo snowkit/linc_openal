@@ -35,6 +35,12 @@ namespace linc {
         extern void sourceQueueBuffer(ALuint source, ALuint buffer);
         extern int sourceUnqueueBuffer(ALuint source);
 
+        #if defined(ANDROID) || defined(__ANDROID__)
+            extern void androidResume();
+            extern void androidSuspend();
+        #endif
+
+
     } //openal namespace
 
 } //linc namespace

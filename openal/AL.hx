@@ -303,6 +303,16 @@ extern class ALC {
         @:native('alcGetContextsDevice')
     public static function getContextsDevice(context:Context) : Device;
 
+// android
+#if android
+
+        @:native('linc::openal::androidSuspend')
+    public static function androidSuspend() : Void;
+        @:native('linc::openal::androidResume')
+    public static function androidResume() : Void;
+
+#end
+
 // devices
 
         @:native('alcOpenDevice')
