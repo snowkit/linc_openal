@@ -18,13 +18,11 @@ namespace linc {
 
     namespace openal {
 
-        extern int genSource();
+        extern ALuint genSource();
         extern void deleteSource(ALuint source);
-        extern int genBuffer();
-        extern Array<int> genBuffers(int count, Array <int> into);
-        extern void deleteBuffers(Array<int> buffers);
+        extern ALuint genBuffer();
         extern void deleteBuffer(ALuint buffer);
-        extern void bufferData(ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength);
+        extern void bufferData(ALuint buffer, ALuint format, ALuint frequency, Array<unsigned char> bytes, ALuint byteOffset, ALuint byteLength);
         extern ALCcontext* createContext(ALCdevice* device, Array<ALCint> attr_list );
         extern int getBufferi(ALuint buffer, int param);
         extern float getBufferf(ALuint buffer, int param);

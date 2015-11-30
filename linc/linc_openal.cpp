@@ -33,47 +33,27 @@
 
         //AL helpers
 
-            int genSource() {
+            ALuint genSource() {
                 ALuint source;
                 alGenSources( (ALuint)1, &source);
-                return (int)source;
+                return source;
             }
 
             void deleteSource(ALuint source) {
                 alDeleteSources( (ALuint)1, &source);
             }
 
-            int genBuffer() {
+            ALuint genBuffer() {
                 ALuint buffer;
                 alGenBuffers( (ALuint)1, &buffer );
-                return (int)buffer;
+                return buffer;
             }
 
             void deleteBuffer(ALuint buffer) {
+
                 alDeleteBuffers( (ALuint)1, &buffer );
-            }
-
-            Array<int> genBuffers(int count, Array<int> into) {
-                
-                #if HX_DEBUG
-                if(into == null() || into->length < count) {
-                    HX_STACK_DO_THROW(::String("linc::openal::genBuffers passed null or an array that is too small in length for the requested size"));
-                    return into;
-                }
-                #endif
-
-                alGenBuffers( (ALuint)count, reinterpret_cast<ALuint*>(&into[0]) );
-
-                return into;
 
             }
-
-            void deleteBuffers(Array<int> buffers) {
-                
-                alDeleteBuffers((ALuint)buffers->length, reinterpret_cast<ALuint*>(&buffers[0]));
-
-            } //deleteBuffers
-
 
             void bufferData( ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength) {
             
