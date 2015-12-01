@@ -13,8 +13,10 @@ typedef ALuint = UInt;
 
 @:keep
 @:include('linc_openal.h')
+#if !display
 @:build(linc.Linc.touch())
 @:build(linc.Linc.xml('openal'))
+#end
     /** The main OpenAL API */
 extern class AL {
 
@@ -298,7 +300,9 @@ extern class AL {
 
 
 @:include('linc_openal.h')
+#if !display
 @:build(linc.Linc.touch())
+#end
 extern class ALC {
 
 // contexts
