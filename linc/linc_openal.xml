@@ -3,17 +3,17 @@
     <files id='haxe'>
         <compilerflag value='-DLINC_OPENAL'/>
         <compilerflag value='-I${LINC_OPENAL_PATH}/linc/'/>
-        <file name='${LINC_OPENAL_PATH}/linc/linc_openal.cpp' />
+        <file name='${LINC_OPENAL_PATH}linc/linc_openal.cpp' />
     </files>
 
     <files id="__main__">
-        <compilerflag value='-I${LINC_OPENAL_PATH}/linc/'/>
+        <compilerflag value='-I${LINC_OPENAL_PATH}linc/'/>
     </files>
 
     <section if="android">
-        <set name='NATIVE_TOOLKIT_PATH' value='${LINC_OPENAL_PATH}/lib/'/>
-        <include name='${LINC_OPENAL_PATH}/lib/openal-android/files.xml'/>
-        <include name='${LINC_OPENAL_PATH}/lib/openal-android/defines.xml'/>
+        <set name='NATIVE_TOOLKIT_PATH' value='${LINC_OPENAL_PATH}lib/'/>
+        <include name='${LINC_OPENAL_PATH}lib/openal-android/files.xml'/>
+        <include name='${LINC_OPENAL_PATH}lib/openal-android/defines.xml'/>
     </section>
 
     <target id="haxe">
@@ -23,14 +23,14 @@
         </section>
 
         <section if="windows">
-            <lib name='${LINC_OPENAL_PATH}/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
-            <lib name='${LINC_OPENAL_PATH}/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
+            <lib name='${LINC_OPENAL_PATH}lib/openal-soft/lib/Windows64/OpenAL32.lib' if='HXCPP_M64' />
+            <lib name='${LINC_OPENAL_PATH}lib/openal-soft/lib/Windows/OpenAL32.lib' if='HXCPP_M32' />
         </section>
 
         <section if="linux">
             <section if='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
-                <lib name='${LINC_OPENAL_PATH}/openal-soft/lib/Linux64/libopenal.so' if='HXCPP_M64' />
-                <lib name='${LINC_OPENAL_PATH}/openal-soft/lib/Linux/libopenal.so' if='HXCPP_M32' />
+                <lib name='${LINC_OPENAL_PATH}lib/openal-soft/lib/Linux64/libopenal.so' if='HXCPP_M64' />
+                <lib name='${LINC_OPENAL_PATH}lib/openal-soft/lib/Linux/libopenal.so' if='HXCPP_M32' />
                 <vflag name='-Wl,-rpath=$ORIGIN' value='' unless='LINC_OPENAL_LINUX_NO_RPATH_ORIGIN' />
             </section>
             <section unless='LINC_OPENAL_RELATIVE_DYNAMIC_LIB'>
