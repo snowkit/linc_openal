@@ -102,9 +102,9 @@ extern class AL {
 
     // source management
 
-            @:native('alGenSources')
+            @:native('alGenSources') //:todo:
         static function genSources(n:Int) : Array<Int>;
-            @:native('alDeleteSources')
+            @:native('alDeleteSources') //:todo:
         static function deleteSources(sources:Array<Int>) : Void;
             @:native('alIsSource')
         static function isSource(source:Int) : Bool;
