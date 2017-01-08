@@ -1,5 +1,6 @@
-#ifndef _LINC_OPENAL_H_
-#define _LINC_OPENAL_H_
+#pragma once
+
+#include <hxcpp.h>
 
     #if defined(HX_MACOS) || defined(IPHONE)
         #include <OpenAL/al.h>
@@ -11,8 +12,6 @@
         #include "../lib/openal-soft/include/AL/al.h"
         #include "../lib/openal-soft/include/AL/alc.h"
     #endif
-
-#include <hxcpp.h>
 
 namespace linc {
 
@@ -42,5 +41,3 @@ namespace linc {
     } //openal namespace
 
 } //linc namespace
-
-#endif //_LINC_OPENAL_H_
