@@ -2,8 +2,8 @@
 #ifndef _LINC_OPENAL_CPP_
 #define _LINC_OPENAL_CPP_
 
-#include "./linc_openal.h"
 #include <hxcpp.h>
+#include "./linc_openal.h"
 
 #if defined(ANDROID) || defined(__ANDROID__)
     extern "C" {
