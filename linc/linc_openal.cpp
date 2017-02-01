@@ -1,7 +1,3 @@
-//This file is included, so this is required!
-#ifndef _LINC_OPENAL_CPP_
-#define _LINC_OPENAL_CPP_
-
 #include <hxcpp.h>
 #include "./linc_openal.h"
 
@@ -14,153 +10,151 @@
     }
 #endif
 
-    namespace linc {
+namespace linc {
 
-        namespace openal {
+    namespace openal {
 
-            #if defined(ANDROID) || defined(__ANDROID__)
-                
-                void androidResume() {
-                    alcandroid_Resume();
-                }
+        #if defined(ANDROID) || defined(__ANDROID__)
+            
+            void androidResume() {
+                alcandroid_Resume();
+            }
 
-                
-                void androidSuspend() {
-                    alcandroid_Suspend();
-                }
+            
+            void androidSuspend() {
+                alcandroid_Suspend();
+            }
 
+        #endif
+
+    //AL helpers
+
+        ALuint genSource() {
+            ALuint source;
+            alGenSources( (ALuint)1, &source);
+            return source;
+        }
+
+        void deleteSource(ALuint source) {
+            alDeleteSources( (ALuint)1, &source);
+        }
+
+        ALuint genBuffer() {
+            ALuint buffer;
+            alGenBuffers( (ALuint)1, &buffer );
+            return buffer;
+        }
+
+        void deleteBuffer(ALuint buffer) {
+
+            alDeleteBuffers( (ALuint)1, &buffer );
+
+        }
+
+        void bufferData( ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength) {
+        
+            alBufferData( buffer, format, &bytes[0] + byteOffset, byteLength, frequency );
+        
+        }
+
+        int getBufferi(ALuint buffer, int param) {
+            
+            int res;
+
+                alGetBufferi(buffer, param, &res);
+
+            return res;
+
+        } //getBufferi
+
+        float getBufferf(ALuint buffer, int param) {
+            
+            float res;
+
+                alGetBufferf(buffer, param, &res);
+
+            return res;
+        
+        } //getSourcef
+
+        int getSourcei(ALuint source, int param) {
+            
+            int res;
+
+                alGetSourcei(source, param, &res);
+
+            return res;
+
+        } //getSourcei
+
+        float getSourcef(ALuint source, int param) {
+            
+            float res;
+
+                alGetSourcef(source, param, &res);
+
+            return res;
+        
+        } //getSourcef
+
+        Array<int> getSource3i(ALuint source, int param, Array<int> into) {
+
+            #if HX_DEBUG
+            if(into == null() || into->length < 3) {
+                HX_STACK_DO_THROW(::String("linc::openal::getSource3i passed null or an array with < 3 length"));
+                return into;
+            }
             #endif
 
-        //AL helpers
+            int res1, res2, res3;
 
-            ALuint genSource() {
-                ALuint source;
-                alGenSources( (ALuint)1, &source);
-                return source;
-            }
+                alGetSource3i(source, param, &res1, &res2, &res2);
 
-            void deleteSource(ALuint source) {
-                alDeleteSources( (ALuint)1, &source);
-            }
+                into[0] = res1;
+                into[1] = res2;
+                into[2] = res3;
 
-            ALuint genBuffer() {
-                ALuint buffer;
-                alGenBuffers( (ALuint)1, &buffer );
-                return buffer;
-            }
+            return into;
 
-            void deleteBuffer(ALuint buffer) {
+        }
 
-                alDeleteBuffers( (ALuint)1, &buffer );
+        Array<float> getSource3f(ALuint source, int param, Array<float> into) {
 
-            }
-
-            void bufferData( ALuint buffer, ALuint format, ALuint frequency, Array< unsigned char > bytes, ALuint byteOffset, ALuint byteLength) {
-            
-                alBufferData( buffer, format, &bytes[0] + byteOffset, byteLength, frequency );
-            
-            }
-
-            int getBufferi(ALuint buffer, int param) {
-                
-                int res;
-
-                    alGetBufferi(buffer, param, &res);
-
-                return res;
-
-            } //getBufferi
-
-            float getBufferf(ALuint buffer, int param) {
-                
-                float res;
-
-                    alGetBufferf(buffer, param, &res);
-
-                return res;
-            
-            } //getSourcef
-
-            int getSourcei(ALuint source, int param) {
-                
-                int res;
-
-                    alGetSourcei(source, param, &res);
-
-                return res;
-
-            } //getSourcei
-
-            float getSourcef(ALuint source, int param) {
-                
-                float res;
-
-                    alGetSourcef(source, param, &res);
-
-                return res;
-            
-            } //getSourcef
-
-            Array<int> getSource3i(ALuint source, int param, Array<int> into) {
-
-                #if HX_DEBUG
-                if(into == null() || into->length < 3) {
-                    HX_STACK_DO_THROW(::String("linc::openal::getSource3i passed null or an array with < 3 length"));
-                    return into;
-                }
-                #endif
-
-                int res1, res2, res3;
-
-                    alGetSource3i(source, param, &res1, &res2, &res2);
-
-                    into[0] = res1;
-                    into[1] = res2;
-                    into[2] = res3;
-
+            #if HX_DEBUG
+            if(into == null() || into->length < 3) {
+                HX_STACK_DO_THROW(::String("linc::openal::getSource3f passed null or an array with < 3 length"));
                 return into;
-
             }
+            #endif
 
-            Array<float> getSource3f(ALuint source, int param, Array<float> into) {
+            float res1, res2, res3;
 
-                #if HX_DEBUG
-                if(into == null() || into->length < 3) {
-                    HX_STACK_DO_THROW(::String("linc::openal::getSource3f passed null or an array with < 3 length"));
-                    return into;
-                }
-                #endif
+                alGetSource3f(source, param, &res1, &res2, &res2);
 
-                float res1, res2, res3;
+                into[0] = res1;
+                into[1] = res2;
+                into[2] = res3;
 
-                    alGetSource3f(source, param, &res1, &res2, &res2);
+            return into;
 
-                    into[0] = res1;
-                    into[1] = res2;
-                    into[2] = res3;
+        }
 
-                return into;
+        void sourceQueueBuffer(ALuint source, ALuint buffer) {
+            alSourceQueueBuffers(source, 1, &buffer);
+        }
 
-            }
+        static ALuint unq_buffers[1] = {0};
+        int sourceUnqueueBuffer(ALuint source) {
+            alSourceUnqueueBuffers(source, 1, unq_buffers);
+            return unq_buffers[0];
+        }
 
-            void sourceQueueBuffer(ALuint source, ALuint buffer) {
-                alSourceQueueBuffers(source, 1, &buffer);
-            }
+    //ALC helpers
 
-            static ALuint unq_buffers[1] = {0};
-            int sourceUnqueueBuffer(ALuint source) {
-                alSourceUnqueueBuffers(source, 1, unq_buffers);
-                return unq_buffers[0];
-            }
+        ALCcontext* createContext(ALCdevice* device, Array<ALCint> attr_list ) {
+            return alcCreateContext(device, (attr_list != null()) ? &attr_list[0] : 0 );
+        }
 
-        //ALC helpers
+    } //openal namespace
 
-            ALCcontext* createContext(ALCdevice* device, Array<ALCint> attr_list ) {
-                return alcCreateContext(device, (attr_list != null()) ? &attr_list[0] : 0 );
-            }
-
-        } //openal namespace
-
-    } //linc namespace
-
-#endif //_LINC_OPENAL_CPP_
+} //linc namespace
