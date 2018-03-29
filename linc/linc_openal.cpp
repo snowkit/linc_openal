@@ -1,4 +1,6 @@
+#ifndef HXCPP_H
 #include <hxcpp.h>
+#endif
 #include "./linc_openal.h"
 
 #if defined(ANDROID) || defined(__ANDROID__)

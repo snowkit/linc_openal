@@ -1,6 +1,8 @@
 #pragma once
 
+#ifndef HXCPP_H
 #include <hxcpp.h>
+#endif
 
     #if defined(HX_MACOS) || defined(IPHONE)
         #include <OpenAL/al.h>
